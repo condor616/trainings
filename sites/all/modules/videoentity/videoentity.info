@@ -1,0 +1,6 @@
+name = Video Entity
+description = Provide a custom Video Entity for tracking and displaying vieo embed codes
+core = 7.x
+package = Trainings
+
+dependencies[] = entity

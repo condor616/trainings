@@ -1,0 +1,7 @@
+name = Mailfish
+description = Allows users to subscribe to nodes
+core = 7.x
+version = 0.2-dev
+package = Trainings
+dependencies[] = block
+configure = admin/config/content/mailfish

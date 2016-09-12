@@ -1,0 +1,67 @@
+<?php
+
+/*
+ * @file
+ * Provide a custom Video Entity for tracking and displaying vieo embed codes
+ */
+
+
+/*
+ * Implements hooke_entity_info().
+ */
+function videoentity_entity_info() {
+  $info = array();
+
+  $info['video'] = array(
+    //Human readable name
+    'label' => t('Video'),
+
+    //Table for storing entity data, defined in hook_schema
+    'base table' => 'videoentity_video',
+
+    //This helps Entity API know how to query your custom table
+    'entity keys' => array(
+      'id' => 'id'
+    ),
+  );
+
+  return $info;
+}
+
+
+/*
+ * Implements hook_menu().
+ */
+function videoentity_menu() {
+  $items = array();
+  $items['videoentity'] = array(
+    'title' => 'Demo Page for Videoentity',
+    'page callback' => 'videoentity_demo_page',
+    'access callback' => TRUE,
+    'menu' => 'navigation',
+  );
+
+  return $items;
+}
+
+
+/*
+ * Callback for /videoentity page
+ */
+function videoentity_demo_page() {
+
+  //Traditional method
+  $video = entity_load('video', array(1000));
+  //dpm($video);
+
+  //EFQ - EntityFieldQuery
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'video');
+  $result = $query->execute();
+  dpm($result);
+
+
+
+  return "Hello World!";
+
+}

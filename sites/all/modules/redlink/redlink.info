@@ -1,0 +1,4 @@
+name = RedLink
+description = Add a link to delete the node
+core = 7.x
+package = Trainings
